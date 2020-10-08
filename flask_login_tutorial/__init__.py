@@ -8,10 +8,15 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 
 
+
 def create_app():
     """Construct the core app object."""
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object('config.Config')
+
+    #app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:password@localhost/database1"
+    app.config ["SQLALCHEMY_DATABASE_URI"] = "sqlite:///sample.db"
+    app.config['SECRET_KEY'] = "xxxxx7x88"
 
     # Initialize Plugins
     db.init_app(app)
